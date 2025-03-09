@@ -36,7 +36,6 @@ class Appointments:
 
     @classmethod
     def cancel(cls, appointmentId):
-        """Cancels an appointment."""
         appointment = cls.get_appointment(appointmentId)
         if appointment:
             appointment.status = "Canceled"
@@ -45,5 +44,16 @@ class Appointments:
 
     @classmethod
     def get_all_appointments(cls):
-        """Returns all appointments."""
         return cls.appointments
+
+a1 = Appointments.schedule(101, "Hospital A") 
+a2 = Appointments.schedule(102, "Clinic B")
+
+a1.updateStatus("Completed")
+
+Appointments.reschedule(2, "Clinic C")
+
+Appointments.cancel(1)
+
+print([vars(appt) for appt in Appointments.get_all_appointments()])
+
