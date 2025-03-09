@@ -1,6 +1,6 @@
 import datetime
 
-class Appointments:
+class Appointment:
     appointments = []
     id = 1
 
@@ -22,7 +22,7 @@ class Appointments:
         return appointment
 
     @classmethod
-    def get_appointment(cls, appointmentId):
+    def getAppointment(cls, appointmentId):
         for appt in cls.appointments:
             if appt.appointmentId == appointmentId:
                 return appt
@@ -47,7 +47,7 @@ class Appointments:
         return None
 
     @classmethod
-    def get_all_appointments(cls):
+    def getAllAppointments(cls):
         return cls.appointments
 
 a1 = Appointments.schedule(101, "2025-03-15 14:00:00", "Hospital A")
