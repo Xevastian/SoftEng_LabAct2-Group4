@@ -31,9 +31,9 @@ class User:
 
 #not existing user
 test= User("john_doess", "pass123", "john@example.com", "John Doe", "1990-05-15", 35, "Male", "123 Street, NY") 
-test.login()
+test.login(test.username,test.password)
 #existing user
 user = User("john_doe", "pass123", "john@example.com", "John Doe", "1990-05-15", 35, "Male", "123 Street, NY") 
-print(user.login()) #role if the user exist
+print(user.login(user.username,user.password)) #role if the user exist
 user.change_password("password", "newpass456") # wrong pass
 user.change_password("pass123", "newpass456") #succesfull change
