@@ -14,9 +14,9 @@ class User:
         self.address = address
         self.role = 'patient'
 
-    def login(self):
-        if db.get_user_data(self.username,"password") == self.password:
-            return db.get_user_data(self.username,"role")
+    def login(self,username,password):
+        if db.get_user_data(username,"password") == password:
+            return db.get_user_data(username,"role")
         return "User not found."
 
     def logout(self):
