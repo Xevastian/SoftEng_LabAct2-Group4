@@ -1,0 +1,24 @@
+[
+    {
+        "username": "john_doe",
+        "password": "newpass456",
+        "email": "john@example.com",
+        "fullName": "John Doe",
+        "birthDate": "1990-05-15",
+        "age": 35,
+        "gender": "Male",
+        "address": "123 Street, NY",
+        "role": "patient"
+    },
+    {
+        "username": "john_doe2",
+        "password": "pass123",
+        "email": "john@example.com",
+        "fullName": "John Doe",
+        "birthDate": "1990-05-15",
+        "age": 34,
+        "gender": "Male",
+        "address": "123 Street, NY",
+        "role": "patient"
+    }
+]

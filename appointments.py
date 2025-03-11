@@ -5,8 +5,8 @@ class Appointment:
     id = 1
 
     def __init__(self, userId, time, location, status="Pending"):
-        self.appointmentId = Appointments.id
-        Appointments.id += 1
+        self.appointmentId = Appointment.id
+        Appointment.id += 1
         self.userId = userId
         self.time = time
         self.location = location
@@ -50,13 +50,13 @@ class Appointment:
     def getAllAppointments(cls):
         return cls.appointments
 
-a1 = Appointments.schedule(101, "2025-03-15 14:00:00", "Hospital A")
-a2 = Appointments.schedule(102, "2025-03-16 09:30:00", "Clinic B")
+a1 = Appointment.schedule(101, "2025-03-15 14:00:00", "Hospital A")
+a2 = Appointment.schedule(102, "2025-03-16 09:30:00", "Clinic B")
 
 a1.updateStatus("Completed")
 
-Appointments.reschedule(2, "2025-03-17 10:00:00", "Clinic C")
+Appointment.reschedule(2, "2025-03-17 10:00:00", "Clinic C")
 
-Appointments.cancel(1)
+Appointment.cancel(1)
 
-print([vars(appt) for appt in Appointments.get_all_appointments()])
+print([vars(appt) for appt in Appointment.get_all_appointments()])
