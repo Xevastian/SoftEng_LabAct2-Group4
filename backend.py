@@ -67,3 +67,11 @@ class DBModel:
                 return user.get(key, "Key not found.")
         print("User not found.")
         return None
+    
+    def get_user(self, username):
+        users = self.load_users()
+        for user in users:
+            if user["username"] == username:
+                return user
+        print("User not found.")
+        return None

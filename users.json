@@ -19,6 +19,6 @@
         "age": 34,
         "gender": "Male",
         "address": "123 Street, NY",
-        "role": "patient"
+        "role": "admin"
     }
 ]

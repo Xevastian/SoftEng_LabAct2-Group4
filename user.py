@@ -3,20 +3,23 @@ from backend import DBModel
 db = DBModel()
 
 class User:
-    def __init__(self, username, password, email, fullName, birthDate, age, gender, address):
-        self.username = username
-        self.password = password
-        self.email = email
-        self.fullName = fullName
-        self.birthDate = birthDate
-        self.age = age
-        self.gender = gender
-        self.address = address
-        self.role = 'patient'
+    def __init__(self, user_data):
+        if user_data is None:
+            raise ValueError("User data cannot be None")
+        
+        self.username = user_data["username"]
+        self.password = user_data["password"]
+        self.email = user_data["email"]
+        self.fullName = user_data["fullName"]
+        self.birthDate = user_data["birthDate"]
+        self.age = user_data["age"]
+        self.gender = user_data["gender"]
+        self.address = user_data["address"]
+        self.role = user_data["role"]
 
-    def login(self,username,password):
-        if db.get_user_data(username,"password") == password:
-            return db.get_user_data(username,"role")
+    def login(self, username, password):
+        if db.get_user_data(username, "password") == password:
+            return db.get_user_data(username, "role")
         return "User not found."
 
     def logout(self):
@@ -24,16 +27,7 @@ class User:
 
     def change_password(self, old_password, new_password):
         if self.password == old_password:
-            db.update(self.username, "password",new_password)
+            db.update(self.username, "password", new_password)
             print("Password changed successfully.")
         else:
             print("Incorrect old password.")
-
-#not existing user
-test= User("john_doess", "pass123", "john@example.com", "John Doe", "1990-05-15", 35, "Male", "123 Street, NY") 
-test.login(test.username,test.password)
-#existing user
-user = User("john_doe", "pass123", "john@example.com", "John Doe", "1990-05-15", 35, "Male", "123 Street, NY") 
-print(user.login(user.username,user.password)) #role if the user exist
-user.change_password("password", "newpass456") # wrong pass
-user.change_password("pass123", "newpass456") #succesfull change
