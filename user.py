@@ -2,7 +2,7 @@ from backend import DBModel
 
 db = DBModel()
 
-class User:
+class User: #for loging in
     def __init__(self, user_data):
         if user_data is None:
             raise ValueError("User data cannot be None")

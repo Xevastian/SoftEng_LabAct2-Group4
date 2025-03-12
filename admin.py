@@ -12,7 +12,7 @@ class Admin(User):
             "age": user.age,
             "gender": user.gender,
             "address": user.address,
-            "role": "admin"  # Ensure role is set to admin
+            "role" : user.role
         })
 
     def manage_users(self):
@@ -33,12 +33,12 @@ stored_password = db.get_user_data(username, "password")
 if stored_password and stored_password == password:
     user_data = db.get_user(username)  # Fetch full user details
     if user_data:
-        user = User(user_data)  # Create User object
+        user = User(user_data)  
         
         if user.role == "admin":
-            admin = Admin(user)  # Convert User to Admin
+            admin = Admin(user)  
             print(f"Logged in as: {admin.role}")
-            admin.manage_users()  # Test admin methods
+            admin.manage_users()  
             admin.approve_appointment()
             admin.view_reports()
         else:

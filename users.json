@@ -20,5 +20,27 @@
         "gender": "Male",
         "address": "123 Street, NY",
         "role": "admin"
+    },
+    {
+        "username": "john_doe1",
+        "password": "pass123",
+        "email": "john@example.com",
+        "fullName": "John Doe",
+        "birthDate": "1990-05-15",
+        "age": 34,
+        "gender": "Male",
+        "address": "123 Street, NY",
+        "role": "admin2"
+    },
+    {
+        "username": "john_doe3",
+        "password": "pass123",
+        "email": "john@example.com",
+        "fullName": "John Doe",
+        "birthDate": "1990-05-15",
+        "age": 34,
+        "gender": "Male",
+        "address": "123 Street, NY",
+        "role": "admin1"
     }
 ]
