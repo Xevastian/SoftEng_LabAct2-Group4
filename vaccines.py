@@ -3,17 +3,15 @@ from backend import DBModel
 db = DBModel("vaccines.json")
 
 class Vaccine:
-    @staticmethod
+
     def check_stock(id):
-        """Check the stock of a vaccine by its ID. Returns None if stock is 0 or less."""
         vaccine = db.get(id, "vaccineId")
         if vaccine and vaccine["stock"] > 0:
             return vaccine["stock"]
         return None  # Do not print if stock is 0 or less
 
-    @staticmethod
+    
     def reduce_stock(id, amount=1):
-        """Reduce the stock of a vaccine by a given amount, ensuring it doesn't go below zero."""
         vaccine = db.get(id, "vaccineId")
         if not vaccine or vaccine["stock"] <= 0 and amount > vaccine['stock']:
             print('\n Unable to decrease stock due to limited or non existent supply.')
@@ -22,7 +20,7 @@ class Vaccine:
         new_stock = max(0, vaccine["stock"] - amount)  # Ensure stock doesn't go negative
         db.update(id, "stock", new_stock, identifier_key="vaccineId")
 
-    @staticmethod
+    
     def add_vaccine(name, manufacturer, count):
         """If a vaccine with the same name & manufacturer exists, increase stock. Otherwise, add a new entry."""
         all_vaccines = db.read_all()
@@ -43,7 +41,7 @@ class Vaccine:
         }
         db.create_data(new_vaccine)
 
-    @staticmethod
+    
     def getVaccineInfo(id):
         """Return the name and manufacturer of a vaccine by its ID."""
         vaccine = db.get(id, "vaccineId")
@@ -51,7 +49,7 @@ class Vaccine:
             return {"name": vaccine["name"], "manufacturer": vaccine["manufacturer"]}
         return None  # No print statement if not found
 
-    @staticmethod
+    
     def get_all_vaccines():
         """Return all vaccines from the database, excluding those with stock 0 or less."""
         all_vaccines = db.read_all()

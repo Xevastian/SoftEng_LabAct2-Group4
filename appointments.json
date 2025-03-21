@@ -4,7 +4,7 @@
         "userId": "002c3197",
         "time": "02:30pm",
         "vaccination": "Anti-Flu",
-        "status": "Pending"
+        "status": "Done"
     },
     {
         "appointmentId": 4,
@@ -22,13 +22,6 @@
     },
     {
         "appointmentId": 6,
-        "userId": "002c3197",
-        "time": "02:30pm",
-        "vaccination": "Anti-Flu",
-        "status": "Pending"
-    },
-    {
-        "appointmentId": 7,
         "userId": "002c3197",
         "time": "02:30pm",
         "vaccination": "Anti-Flu",

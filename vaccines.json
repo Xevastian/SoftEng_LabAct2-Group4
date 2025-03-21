@@ -16,5 +16,17 @@
         "name": "COVIDdas19",
         "manufacturer": "Pfizer",
         "stock": 80
+    },
+    {
+        "vaccineId": 4,
+        "name": "pfizer",
+        "manufacturer": "eq",
+        "stock": 23
+    },
+    {
+        "vaccineId": 5,
+        "name": "das",
+        "manufacturer": "rew",
+        "stock": 0
     }
 ]

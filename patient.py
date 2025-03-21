@@ -1,15 +1,29 @@
 from user import User
+from backend import DBModel
+
+db = DBModel("users.json")
 
 class Patient(User):
-    def __init__(self, user_id, username, password, email, patient_id):
-        super().__init__(user_id, username, password, email, role="Patient")
-        self.patient_id = patient_id
+    def __init__(self, user_data):
+        super().__init__(user_data)
+        if self.role != "patient":
+            raise ValueError("User is not a patient.")
 
-    def book_appointment(self):
-        print(f"Patient {self.username} booked an appointment.")
-
-    def cancel_appointment(self):
-        print(f"Patient {self.username} canceled an appointment.")
+    def book_appointment(self, appointment_data):
+        db_appointments = DBModel("appointments.json")
+        db_appointments.register(**appointment_data)
+        print("Appointment booked successfully.")
 
     def view_appointment(self):
-        print(f"Patient {self.username} is viewing appointments.")
+        db_appointments = DBModel("appointments.json")
+        appointments = db_appointments.readData("patient")
+        if appointments:
+            for appointment in appointments:
+                print(appointment)
+        else:
+            print("No appointments found.")
+
+    def cancel_appointment(self, appointment_id):
+        db_appointments = DBModel("appointments.json")
+        db_appointments.update(appointment_id, "status", "Canceled")
+        print("Appointment canceled successfully.")

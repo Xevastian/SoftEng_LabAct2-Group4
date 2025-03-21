@@ -1,4 +1,6 @@
-from user import *
+from user import User
+from admin import Admin
+from patient import Patient
 from appointments import Appointment
 from vaccines import Vaccine
 from backend import DBModel
@@ -43,7 +45,7 @@ def register():
         "age": age,
         "gender": gender,
         "address": address,
-        "role": "patient",  # Default role
+        "role": "patient",  #
     }
     users_db.create(user_data)
     return
@@ -103,10 +105,10 @@ def adminTerminal(admin):
             admin.manage_users()
             pass
         elif choice == "2":
-            #admin.manage_appointment()
+            admin.manage_appointment()
             pass
         elif choice == '3':
-            #admin.manage_vaccincation()
+            admin.manage_vaccincation()
             pass
         elif choice == '4':
             break
