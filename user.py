@@ -6,7 +6,7 @@ class User:
     def __init__(self, user_data):
         if user_data is None:
             raise ValueError("User data cannot be None")
-        
+        self.id = user_data['id']
         self.username = user_data["username"]
         self.password = user_data["password"]
         self.email = user_data["email"]

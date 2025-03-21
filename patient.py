@@ -1,5 +1,6 @@
 from user import User
 from backend import DBModel
+from appointments import Appointment
 
 db = DBModel("users.json")
 
@@ -9,21 +10,34 @@ class Patient(User):
         if self.role != "patient":
             raise ValueError("User is not a patient.")
 
-    def book_appointment(self, appointment_data):
-        db_appointments = DBModel("appointments.json")
-        db_appointments.register(**appointment_data)
-        print("Appointment booked successfully.")
+    def book_appointment(self, time, vaccination):
+        Appointment.schedule_appointment(self.id, time, vaccination)
+        print("\nAppointment successfully booked!")
 
     def view_appointment(self):
-        db_appointments = DBModel("appointments.json")
-        appointments = db_appointments.readData("patient")
-        if appointments:
-            for appointment in appointments:
-                print(appointment)
-        else:
-            print("No appointments found.")
+        appointments = Appointment.getAllAppointments(filter_key="userId", filter_value=self.id)
+        
+        if not appointments:
+            print("\nNo appointments found.")
+            return
+        
+        print("\nYour Appointments:")
+        print("-" * 80)
+        print(f"{'ID':<10}{'Time':<20}{'Vaccine':<20}{'Status':<15}")
+        print("-" * 80)
+
+        for appt in appointments:
+            print(f"{appt['appointmentId']:<10}{appt['time']:<20}{appt['vaccination']:<20}{appt['status']:<15}")
+
+        print("-" * 80)
 
     def cancel_appointment(self, appointment_id):
-        db_appointments = DBModel("appointments.json")
-        db_appointments.update(appointment_id, "status", "Canceled")
-        print("Appointment canceled successfully.")
+        appointments = Appointment.getAllAppointments(filter_key="userId", filter_value=self.id)
+        for appointment in appointments:
+            if appointment['appointmentId']:# == appointment_id and appointment['userId'] == self.id:
+                Appointment.delete_appointment(appointment_id)
+                print("\nAppointment successfully canceled!")
+                return
+        print("\nAppointment not found or does not belong to you.")
+            
+        

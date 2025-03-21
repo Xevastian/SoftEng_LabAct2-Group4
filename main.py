@@ -51,45 +51,33 @@ def register():
     return
 
 def login():
-    # email = input("Email: ")
-    # password = input("Password: ")
-    # user = users_db.get(email,'email')
-    # if user == {} or user['password'] != hashlib.sha256(password.encode()).hexdigest():
-    #     print('Wrong email or password')
-    #     return   
-    # user = User(user)
-    # if user.role == 'admin':
-    #     adminTerminal(user)
-    # else:
-    #     patientTerminal(user)
-    adminTerminal({
-        "username": "VexIvan",
-        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-        "email": "test@gmail.com",
-        "fullName": "Vex Ivan Sumang",
-        "birthDate": "2004-10-16",
-        "age": 20,
-        "gender": "Male",
-        "address": "BSU",
-        "role": "admin",
-        "id": "c7aadb9c"
-    })
+    email = input("Email: ")
+    password = input("Password: ")
+    user = users_db.get(email,'email')
+    if user == {} or user['password'] != hashlib.sha256(password.encode()).hexdigest():
+        print('Wrong email or password')
+        return   
+    print(user)
+    if user['role'] == 'admin':
+        adminTerminal(user)
+    else:
+        patientTerminal(user)
     return
 
 def patientTerminal(patient):
     patient = Patient(patient)
     while True:
-        choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Edit Appointment     [4]Log out\n\nInput: ").strip()
+        choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Cancel Appointment     [4]Log out\n\nInput: ").strip()
 
         if choice == "1":
-            #patient.book_appointment()
-            pass
+            time = input("Enter time(HH:MM): ")
+            vaccination = input("Enter Vaccine: ")
+            patient.book_appointment(time, vaccination)
         elif choice == "2":
-            #patient.view_appointment()
-            pass
+            patient.view_appointment()
         elif choice == '3':
-            #patient.edit_appointment()
-            pass
+            appointmentId = input("Enter appointment ID: ")
+            patient.cancel_appointment(appointmentId)
         elif choice == '4':
             break
         else:

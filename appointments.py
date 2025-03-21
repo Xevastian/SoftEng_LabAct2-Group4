@@ -13,8 +13,8 @@ class Appointment:
         }
         db.create_data(new_appointment)
 
-    def getAllAppointments(filter_key=None, filter_value=None):
-        return db.read_all(filter_key=None, filter_value=None)
+    def getAllAppointments(filter_key = None, filter_value = None):
+        return db.read_all(filter_key, filter_value)
     
     def update_appointment(appointmentId, key, new_value):
         db.update(appointmentId, key, new_value, identifier_key="appointmentId")

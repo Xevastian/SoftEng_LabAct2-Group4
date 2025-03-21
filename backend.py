@@ -88,8 +88,7 @@ class DBModel:
     
     def delete(self, id, identifier_key="id"):
         data = self.load_data()
-        updated_data = [item for item in data if item.get(identifier_key) != id]
-
+        updated_data = [item for item in data if item[identifier_key] != id]
         if len(updated_data) == len(data):  # No changes means ID was not found
             print("ID not found.")
             return

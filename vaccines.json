@@ -28,5 +28,11 @@
         "name": "das",
         "manufacturer": "rew",
         "stock": 0
+    },
+    {
+        "vaccineId": 6,
+        "name": "dsa",
+        "manufacturer": "dsa",
+        "stock": 12
     }
 ]
