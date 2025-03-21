@@ -3,34 +3,22 @@ from backend import DBModel
 db = DBModel("appointments.json")
 
 class Appointment:
-    appointments = []
-    id = 1
-
-    def __init__(self, userId, time, location, status="Pending"):
-        self.appointmentId = Appointment.id
-        Appointment.id += 1
-        self.userId = userId
-        self.time = time
-        self.location = location
-        self.status = status
-
-    def save_to_db(self):
+    def schedule_appointment(userId,time,vaccination):
         new_appointment = {
-            "appointmentId": self.appointmentId,
-            "userId": self.userId,
-            "time": self.time,
-            "location": self.location,
-            "status": self.status
+            "appointmentId": int(db.get_last_id('appointmentId')) + 1 if db.get_last_id('appointmentId') != None else 1,
+            "userId": userId,
+            "time": time,
+            "vaccination": vaccination,
+            "status": 'Pending'
         }
-        db.create(new_appointment)  # Save to the JSON file immediately
+        db.create_data(new_appointment)
 
-    @classmethod
-    def schedule(cls, userId, time, location):
-        appointment = cls(userId, time, location, status="Scheduled")
-        cls.appointments.append(appointment)
-        appointment.save_to_db()  # Save the appointment to JSON
-        return appointment
+    def getAllAppointments(filter_key=None, filter_value=None):
+        return db.read_all(filter_key=None, filter_value=None)
+    
+    def update_appointment(appointmentId, key, new_value):
+        db.update(appointmentId, key, new_value, identifier_key="appointmentId")
 
-    @classmethod
-    def getAllAppointments(cls):
-        return cls.appointments
+    def delete_appointment(appointmentId):
+        db.delete(appointmentId, identifier_key="appointmentId")
+    

@@ -1,45 +1,58 @@
 from backend import DBModel
 
+db = DBModel("vaccines.json")
+
 class Vaccine:
-    db = DBModel("vaccines.json")
-    id_counter = 1
+    @staticmethod
+    def check_stock(id):
+        """Check the stock of a vaccine by its ID. Returns None if stock is 0 or less."""
+        vaccine = db.get(id, "vaccineId")
+        if vaccine and vaccine["stock"] > 0:
+            return vaccine["stock"]
+        return None  # Do not print if stock is 0 or less
 
-    def __init__(self, name, manufacturer, numOfStock):
-        self.vaccineId = Vaccine.id_counter
-        Vaccine.id_counter += 1
-        self.name = name
-        self.manufacturer = manufacturer
-        self.numOfStock = numOfStock
+    @staticmethod
+    def reduce_stock(id, amount=1):
+        """Reduce the stock of a vaccine by a given amount, ensuring it doesn't go below zero."""
+        vaccine = db.get(id, "vaccineId")
+        if not vaccine or vaccine["stock"] <= 0 and amount > vaccine['stock']:
+            print('\n Unable to decrease stock due to limited or non existent supply.')
+            return  # Do nothing if stock is already 0 or vaccine doesn't exist
 
-    def check_stock(self):
-        return self.numOfStock
+        new_stock = max(0, vaccine["stock"] - amount)  # Ensure stock doesn't go negative
+        db.update(id, "stock", new_stock, identifier_key="vaccineId")
 
-    def reduce_stock(self, quantity):
-        if quantity > self.numOfStock:
-            return "Not enough stock available"
-        self.numOfStock -= quantity
-        Vaccine.db.update(self.vaccineId, "numOfStock", self.numOfStock, "vaccineId")
-        return f"Stock reduced by {quantity}, remaining: {self.numOfStock}"
+    @staticmethod
+    def add_vaccine(name, manufacturer, count):
+        """If a vaccine with the same name & manufacturer exists, increase stock. Otherwise, add a new entry."""
+        all_vaccines = db.read_all()
+        
+        for vaccine in all_vaccines:
+            if vaccine["name"] == name and vaccine["manufacturer"] == manufacturer:
+                # If found, increase stock instead of creating a new entry
+                new_stock = vaccine["stock"] + count
+                db.update(vaccine["vaccineId"], "stock", new_stock, identifier_key="vaccineId")
+                return
 
-    def save_to_db(self):
+        # If no existing vaccine found, create a new one
         new_vaccine = {
-            "vaccineId": self.vaccineId,
-            "name": self.name,
-            "manufacturer": self.manufacturer,
-            "numOfStock": self.numOfStock
+            "vaccineId": int(db.get_last_id("vaccineId")) + 1 if db.get_last_id("vaccineId") is not None else 1,
+            "name": name,
+            "manufacturer": manufacturer,
+            "stock": count
         }
-        Vaccine.db.create(new_vaccine, "vaccineId")
+        db.create_data(new_vaccine)
 
-    @classmethod
-    def add_vaccine(cls, name, manufacturer, numOfStock):
-        vaccine = cls(name, manufacturer, numOfStock)
-        vaccine.save_to_db()
-        return vaccine
+    @staticmethod
+    def getVaccineInfo(id):
+        """Return the name and manufacturer of a vaccine by its ID."""
+        vaccine = db.get(id, "vaccineId")
+        if vaccine:
+            return {"name": vaccine["name"], "manufacturer": vaccine["manufacturer"]}
+        return None  # No print statement if not found
 
-    @classmethod
-    def get_vaccine_by_id(cls, vaccineId):
-        return cls.db.get(vaccineId, "vaccineId")
-
-    @classmethod
-    def get_all_vaccines(cls):
-        return cls.db.get_all()
+    @staticmethod
+    def get_all_vaccines():
+        """Return all vaccines from the database, excluding those with stock 0 or less."""
+        all_vaccines = db.read_all()
+        return [vaccine for vaccine in all_vaccines if vaccine["stock"] > 0]

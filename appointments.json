@@ -1,23 +1,37 @@
 [
     {
-        "appointmentId": 1,
-        "userId": "alexander",
-        "time": "2025-05-22 08:22:22",
-        "location": "Here",
-        "status": "Pending"
-    },
-    {
         "appointmentId": 2,
-        "userId": "alexander",
-        "time": "1",
-        "location": "location",
+        "userId": "002c3197",
+        "time": "02:30pm",
+        "vaccination": "Anti-Flu",
         "status": "Pending"
     },
     {
-        "appointmentId": 3,
-        "userId": "alexander",
-        "time": "time",
-        "location": "loc",
+        "appointmentId": 4,
+        "userId": "002c3197",
+        "time": "02:30pm",
+        "vaccination": "Anti-Flu",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 5,
+        "userId": "002c3197",
+        "time": "02:30pm",
+        "vaccination": "Anti-Flu",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 6,
+        "userId": "002c3197",
+        "time": "02:30pm",
+        "vaccination": "Anti-Flu",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 7,
+        "userId": "002c3197",
+        "time": "02:30pm",
+        "vaccination": "Anti-Flu",
         "status": "Pending"
     }
 ]

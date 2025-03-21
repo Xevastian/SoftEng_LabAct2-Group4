@@ -33,7 +33,7 @@ class DBModel:
             json.dump(data, file, indent=4)
 
     # Adding data
-    def create(self, new_data):
+    def create(self, new_data): # for users
         data = self.load_data()
         new_data["id"] = generate_id(new_data["username"])
         new_data["password"] = hash_password(new_data["password"])  # Hash password before saving
@@ -44,11 +44,17 @@ class DBModel:
         self.save_data(data)
         print("Data saved successfully.")
 
+    def create_data(self, new_data):
+        data = self.load_data()
+        data.append(new_data)
+        self.save_data(data)
+        print("Data saved successfully.")
+
     # Updating data
-    def update(self, id, key, new_value):
+    def update(self, id, key, new_value, identifier_key="id"):
         data = self.load_data()
         for item in data:
-            if item.get("id") == id:
+            if item.get(identifier_key) == id:
                 if key == "password":
                     new_value = hash_password(new_value)  # Hash new password before updating
                 item[key] = new_value
@@ -73,3 +79,20 @@ class DBModel:
             if item[key] == value:
                 return item
         return {}
+    
+    def get_last_id(self,id_name): # for increments of id in json
+        data = self.load_data()
+        if data:
+            return data[-1][id_name]
+        return None  
+    
+    def delete(self, id, identifier_key="id"):
+        data = self.load_data()
+        updated_data = [item for item in data if item.get(identifier_key) != id]
+
+        if len(updated_data) == len(data):  # No changes means ID was not found
+            print("ID not found.")
+            return
+
+        self.save_data(updated_data)
+        print("Data deleted successfully.")

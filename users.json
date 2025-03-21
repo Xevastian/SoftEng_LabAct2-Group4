@@ -34,5 +34,17 @@
         "address": "bats",
         "role": "patient",
         "id": "d77bbe31"
+    },
+    {
+        "username": "qwe",
+        "password": "15d0a08f5c3dc14213e26f61136c33a0e0d29c61e8e6e3c281b09a92837f3026",
+        "email": "qwe",
+        "fullName": "qwe",
+        "birthDate": "qwe",
+        "age": "12",
+        "gender": "qwe",
+        "address": "qwe",
+        "role": "patient",
+        "id": "489cd5db"
     }
 ]

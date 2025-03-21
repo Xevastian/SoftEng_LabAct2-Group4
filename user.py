@@ -29,12 +29,7 @@ class User:
         print(f"{self.username} logged out.")
 
     def change_password(self, old_password, new_password):
-        if self.password == old_password:
-            db.update(self.username, "password", new_password)
-            print("Password changed successfully.")
-        else:
-            print("Incorrect old password.")
-
+        pass
 
 class Admin(User):
     def __init__(self, user_data):
@@ -117,7 +112,7 @@ class Admin(User):
 
     def manage_vaccincation(self):
         pass
-    
+
 class Patient(User):
     def __init__(self, user_data):
         super().__init__(user_data)

@@ -1,20 +1,20 @@
 [
     {
         "vaccineId": 1,
-        "name": "Pfizer",
-        "manufacturer": "Pfizer Inc.",
-        "numOfStock": 100
+        "name": "COVID-19",
+        "manufacturer": "Pfizer",
+        "stock": 0
     },
     {
         "vaccineId": 2,
-        "name": "Moderna",
-        "manufacturer": "Moderna Inc.",
-        "numOfStock": 150
+        "name": "COVID-22",
+        "manufacturer": "Pfizer",
+        "stock": 12
     },
     {
         "vaccineId": 3,
-        "name": "AstraZeneca",
-        "manufacturer": "AstraZeneca Plc.",
-        "numOfStock": 200
+        "name": "COVIDdas19",
+        "manufacturer": "Pfizer",
+        "stock": 80
     }
 ]
