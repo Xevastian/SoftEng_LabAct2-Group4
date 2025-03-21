@@ -42,5 +42,12 @@
         "gender": "Male",
         "address": "123 Street, NY",
         "role": "admin1"
+    },
+    {
+        "username": "alexander",
+        "password": "password",
+        "email": "email@gmail.com",
+        "role": "patient",
+        "patient_id": "1"
     }
 ]

@@ -1,0 +1,23 @@
+[
+    {
+        "appointmentId": 1,
+        "userId": "alexander",
+        "time": "2025-05-22 08:22:22",
+        "location": "Here",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 2,
+        "userId": "alexander",
+        "time": "1",
+        "location": "location",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 3,
+        "userId": "alexander",
+        "time": "time",
+        "location": "loc",
+        "status": "Pending"
+    }
+]

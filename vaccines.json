@@ -1,0 +1,20 @@
+[
+    {
+        "vaccineId": 1,
+        "name": "Pfizer",
+        "manufacturer": "Pfizer Inc.",
+        "numOfStock": 100
+    },
+    {
+        "vaccineId": 2,
+        "name": "Moderna",
+        "manufacturer": "Moderna Inc.",
+        "numOfStock": 150
+    },
+    {
+        "vaccineId": 3,
+        "name": "AstraZeneca",
+        "manufacturer": "AstraZeneca Plc.",
+        "numOfStock": 200
+    }
+]
