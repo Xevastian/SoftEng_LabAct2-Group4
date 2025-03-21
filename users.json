@@ -1,53 +1,38 @@
 [
     {
-        "username": "john_doe",
-        "password": "newpass456",
-        "email": "john@example.com",
+        "username": "jodsa_doe23213",
+        "password": "0b60603bdc863c8b92dd32381391e65c53b364f8a8989fe1ceaad41803eb5fa3",
+        "email": "john@example.com21313",
         "fullName": "John Doe",
         "birthDate": "1990-05-15",
         "age": 35,
         "gender": "Male",
         "address": "123 Street, NY",
-        "role": "patient"
-    },
-    {
-        "username": "john_doe2",
-        "password": "pass123",
-        "email": "john@example.com",
-        "fullName": "John Doe",
-        "birthDate": "1990-05-15",
-        "age": 34,
-        "gender": "Male",
-        "address": "123 Street, NY",
-        "role": "admin"
-    },
-    {
-        "username": "john_doe1",
-        "password": "pass123",
-        "email": "john@example.com",
-        "fullName": "John Doe",
-        "birthDate": "1990-05-15",
-        "age": 34,
-        "gender": "Male",
-        "address": "123 Street, NY",
-        "role": "admin2"
-    },
-    {
-        "username": "john_doe3",
-        "password": "pass123",
-        "email": "john@example.com",
-        "fullName": "John Doe",
-        "birthDate": "1990-05-15",
-        "age": 34,
-        "gender": "Male",
-        "address": "123 Street, NY",
-        "role": "admin1"
-    },
-    {
-        "username": "alexander",
-        "password": "password",
-        "email": "email@gmail.com",
         "role": "patient",
-        "patient_id": "1"
+        "id": "002c3197"
+    },
+    {
+        "username": "Ibarra",
+        "password": "113459eb7bb31bddee85ade5230d6ad5d8b2fb52879e00a84ff6ae1067a210d3",
+        "email": "test@gmail.com",
+        "fullName": "Vex Ivan Sumang",
+        "birthDate": "2004-10-16",
+        "age": 20,
+        "gender": "Male",
+        "address": "BSU",
+        "role": "admin",
+        "id": "c7aadb9c"
+    },
+    {
+        "username": "JD",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "johnDoe@gmail.com",
+        "fullName": "John Doe",
+        "birthDate": "2001-12-12",
+        "age": 23,
+        "gender": "Male",
+        "address": "bats",
+        "role": "patient",
+        "id": "d77bbe31"
     }
 ]

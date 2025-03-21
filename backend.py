@@ -1,5 +1,16 @@
 import json
 import os
+import hashlib
+
+# hashing
+def generate_id(username):
+    return hashlib.sha256(username.encode()).hexdigest()[:8]
+
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+def verify_password(password, hashed_password):
+    return hash_password(password) == hashed_password
 
 class DBModel:
     def __init__(self, file_path):
@@ -22,25 +33,30 @@ class DBModel:
             json.dump(data, file, indent=4)
 
     # Adding data
-    def create(self, new_data, unique_key):
+    def create(self, new_data):
         data = self.load_data()
-        if any(item[unique_key] == new_data[unique_key] for item in data):
-            print(f"{unique_key} already exists.")
+        new_data["id"] = generate_id(new_data["username"])
+        new_data["password"] = hash_password(new_data["password"])  # Hash password before saving
+        if any(item["id"] == new_data["id"] for item in data):
+            print("ID already exists.")
             return
         data.append(new_data)
         self.save_data(data)
         print("Data saved successfully.")
 
     # Updating data
-    def update(self, identifier_value, key, new_value, identifier_key="id"):
+    def update(self, id, key, new_value):
         data = self.load_data()
         for item in data:
-            if item.get(identifier_key) == identifier_value:
+            if item.get("id") == id:
+                if key == "password":
+                    new_value = hash_password(new_value)  # Hash new password before updating
                 item[key] = new_value
                 self.save_data(data)
                 print("Data updated successfully.")
                 return
-        print("Item not found.")
+        print("User not found.")
+
 
     # Reading data by role/type
     def read_all(self, filter_key=None, filter_value=None):
@@ -50,10 +66,10 @@ class DBModel:
         return data
 
     # Getting specific data
-    def get(self, identifier_value, identifier_key="id"):
+    def get(self, value, key):
+        
         data = self.load_data()
         for item in data:
-            if item.get(identifier_key) == identifier_value:
+            if item[key] == value:
                 return item
-        print("Item not found.")
-        return None
+        return {}
