@@ -19,5 +19,12 @@
         "time": "09:30",
         "vaccination": "Pfizer",
         "status": "Cancel"
+    },
+    {
+        "appointmentId": 4,
+        "userId": "4135aa9d",
+        "time": "09:30",
+        "vaccination": "COVID-19",
+        "status": "Pending"
     }
 ]

@@ -49,7 +49,21 @@ class Vaccine:
             return {"name": vaccine["name"], "manufacturer": vaccine["manufacturer"]}
         return None  # No print statement if not found
 
-    
+    def get_available_vaccines():
+        """Return a list of all vaccine names, including those with stock 0 or less."""
+        all_vaccines = db.read_all()
+        vaccine_names = [vaccine["name"] for vaccine in all_vaccines]
+
+        # Print the list in the desired format
+        print("\nAvailable Vaccines:")
+        print("-" * 40)
+        print(f"{'ID':<10}{'Vaccine':<20}")
+        print("-" * 40)
+
+        for index, name in enumerate(vaccine_names, 1):
+            print(f"{index:<10}{name:<20}")
+
+
     def get_all_vaccines():
         """Return all vaccines from the database, excluding those with stock 0 or less."""
         all_vaccines = db.read_all()

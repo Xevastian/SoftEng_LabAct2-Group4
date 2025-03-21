@@ -93,6 +93,7 @@ def patientTerminal(patient):
 
         if choice == "1":
             time = input("Enter time(HH:MM): ")
+            Vaccine.get_available_vaccines()
             vaccination = input("Enter Vaccine: ")
             patient.book_appointment(time, vaccination)
         elif choice == "2":
