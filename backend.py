@@ -53,10 +53,10 @@ class DBModel:
     # Updating data
     def update(self, id, key, new_value, identifier_key="id"):
         data = self.load_data()
-        print(f"Loaded Data: {data}")  # Check what data is being loaded
+        print(f"Loaded Data: {data}")
         found = False
         for item in data:
-            if item.get(identifier_key) == (int(id) if identifier_key == "appointmentId" else id):
+            if item.get(identifier_key) == (int(id) if identifier_key == "appointmentId" else id):  # Convert id to int if needed
                 found = True
                 if key == "password":
                     new_value = hash_password(new_value)
@@ -66,6 +66,7 @@ class DBModel:
                 return
         if not found:
             print(f"No item found with {identifier_key} = {id}")
+
 
 
     # Reading data by role/type

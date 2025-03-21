@@ -35,7 +35,7 @@ class Patient(User):
         appointments = Appointment.getAllAppointments(filter_key="userId", filter_value=self.id)
         for appointment in appointments:
             if appointment['appointmentId']:# == appointment_id and appointment['userId'] == self.id:
-                Appointment.cancel_appointment(appointment_id)
+                Appointment.update_appointment(appointment_id, "status", 'Cancel')
                 print("\nAppointment successfully canceled!")
                 return
         print("\nAppointment not found or does not belong to you.")

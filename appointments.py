@@ -21,7 +21,4 @@ class Appointment:
 
     def delete_appointment(appointmentId):
         db.delete(appointmentId, identifier_key="appointmentId")
-
-    def cancel_appointment(appointmentId):
-        db.update(appointmentId, "status", 'Cancel', identifier_key="appointmentId")
     

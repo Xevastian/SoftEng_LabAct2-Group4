@@ -70,5 +70,17 @@
         "address": "Location ",
         "role": "patient",
         "id": "688787d8"
+    },
+    {
+        "username": "alex",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "alex",
+        "fullName": "alex test",
+        "birthDate": "2000-02-01",
+        "age": 25,
+        "gender": "male",
+        "address": "location ",
+        "role": "patient",
+        "id": "4135aa9d"
     }
 ]
