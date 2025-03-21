@@ -46,5 +46,29 @@
         "address": "qwe",
         "role": "patient",
         "id": "489cd5db"
+    },
+    {
+        "username": "alexander",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "test@email.com",
+        "fullName": "Alex",
+        "birthDate": "2000-01-01",
+        "age": 25,
+        "gender": "Male",
+        "address": "Location ",
+        "role": "admin",
+        "id": "9f2a08fd"
+    },
+    {
+        "username": "asdname",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "asd",
+        "fullName": "Alex Password",
+        "birthDate": "2004-20-20",
+        "age": 20,
+        "gender": "Male",
+        "address": "Location ",
+        "role": "patient",
+        "id": "688787d8"
     }
 ]

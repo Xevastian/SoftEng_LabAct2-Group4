@@ -5,12 +5,34 @@ from appointments import Appointment
 from vaccines import Vaccine
 from backend import DBModel
 import hashlib
+import sys
+import msvcrt  # Windows-only
 
 # Initialize databases
 users_db = DBModel("users.json")
 appointments_db = DBModel("appointments.json")
 vaccines_db = DBModel("vaccines.json")
 
+def input_password(prompt="Password: "):
+    print(prompt, end="", flush=True)
+    password = ""
+    
+    while True:
+        ch = msvcrt.getch()  # Read a single character
+        if ch in {b'\r', b'\n'}:  # Enter key is pressed
+            print()  # Move to the next line
+            break
+        elif ch == b'\x08':  # Backspace key is pressed
+            if len(password) > 0:
+                password = password[:-1]
+                sys.stdout.write('\b \b')  # Remove the last `*`
+                sys.stdout.flush()
+        else:
+            password += ch.decode('utf-8')
+            print("*", end="", flush=True)
+    
+    return password
+    
 def main():
     print("Welcome to the Vaccination Appointment System")
     
@@ -29,7 +51,7 @@ def main():
 def register():
     username = input("Username: ")
     email = input("Email: ")
-    password = input("Password: ")
+    password = input_password()
     fullname = input("Full name: ")
     birthDate = input("Birth date (yyyy-mm-dd): ")
     age = int(input("Age: "))
@@ -52,7 +74,7 @@ def register():
 
 def login():
     email = input("Email: ")
-    password = input("Password: ")
+    password = input_password()
     user = users_db.get(email,'email')
     if user == {} or user['password'] != hashlib.sha256(password.encode()).hexdigest():
         print('Wrong email or password')
@@ -76,6 +98,7 @@ def patientTerminal(patient):
         elif choice == "2":
             patient.view_appointment()
         elif choice == '3':
+            patient.view_appointment()
             appointmentId = input("Enter appointment ID: ")
             patient.cancel_appointment(appointmentId)
         elif choice == '4':

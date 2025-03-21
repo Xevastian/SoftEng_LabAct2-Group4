@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "appointmentId": 1,
+        "userId": "9f2a08fd",
+        "time": "09:30",
+        "vaccination": "Pfizer",
+        "status": "Cancel"
+    },
+    {
+        "appointmentId": 2,
+        "userId": "9f2a08fd",
+        "time": "09:30",
+        "vaccination": "Pfizer",
+        "status": "Pending"
+    }
+]
