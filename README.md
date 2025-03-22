@@ -1,5 +1,5 @@
 <p align="center">
-  <h1>Vaccination Appointment System</h1>
+  <h1>EzVaxx: Vaccination Appointment System</h1>
 </p>
 
 
