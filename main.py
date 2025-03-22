@@ -1,4 +1,3 @@
-from user import User
 from admin import Admin
 from patient import Patient
 from appointments import Appointment
@@ -82,7 +81,7 @@ def register():
         "age": age,
         "gender": gender,
         "address": address,
-        "role": "patient",  #
+        "role": "patient",  
     }
     users_db.create(user_data)
     return
@@ -102,8 +101,9 @@ def login():
 
 def patientTerminal(patient):
     patient = Patient(patient)
+    patient.login()
     while True:
-        choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Cancel Appointment     [4]Log out\n\nInput: ").strip()
+        choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Cancel Appointment     [4]Change User Details     [5]Log out\n\nInput: ").strip()
 
         if choice == "1":
             available_times =  get_available_times()
@@ -120,6 +120,23 @@ def patientTerminal(patient):
             appointmentId = input("Enter appointment ID: ")
             patient.cancel_appointment(appointmentId)
         elif choice == '4':
+            key = input("Enter detail to change (age, address, username, password): ").strip()
+            if key not in ["age", "address", "username", "password"]:
+                print("Invalid option. You can only update age, address, username, or password.")
+                continue
+            
+            if key == "password":
+                old_password = input("Enter old password: ").strip()
+                new_password = input("Enter new password: ").strip()
+                try:
+                    patient.change_detail(old_password, new_password, key, new_password)
+                except ValueError as e:
+                    print(e)
+            else:
+                value = input(f"Enter new {key}: ").strip()
+                patient.change_detail(None, None, key, value)
+        elif choice == '5':
+            patient.logout()
             break
         else:
             print("Invalid choice. Please try again.")
@@ -127,19 +144,34 @@ def patientTerminal(patient):
 
 def adminTerminal(admin):
     admin = Admin(admin)
+    admin.login()
     while True:
-        choice = input("\n[1]Manage Users     [2]Manage Appointment     [3]Manage Vaccinations     [4]Log out\n\nInput: ").strip()
+        choice = input("\n[1]Manage Users     [2]Manage Appointment     [3]Manage Vaccinations     [4]Change User Details     [5]Log out\n\nInput: ").strip()
 
         if choice == "1":
             admin.manage_users()
-            pass
         elif choice == "2":
             admin.manage_appointment()
-            pass
         elif choice == '3':
             admin.manage_vaccincation()
-            pass
         elif choice == '4':
+            key = input("Enter detail to change (age, address, username, password): ").strip()
+            if key not in ["age", "address", "username", "password"]:
+                print("Invalid option. You can only update age, address, username, or password.")
+                continue
+            
+            if key == "password":
+                old_password = input("Enter old password: ").strip()
+                new_password = input("Enter new password: ").strip()
+                try:
+                    admin.change_detail(old_password, new_password, key, new_password)
+                except ValueError as e:
+                    print(e)
+            else:
+                value = input(f"Enter new {key}: ").strip()
+                admin.change_detail(None, None, key, value)
+        elif choice == '5':
+            admin.logout()
             break
         else:
             print("Invalid choice. Please try again.")

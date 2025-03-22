@@ -83,7 +83,7 @@ class DBModel:
                     new_value = hash_password(new_value)
                 item[key] = new_value
                 self.save_data(data)
-                print(f"Data updated successfully: {item}")
+                print(f"Data updated successfully.")
                 return
         if not found:
             print(f"No item found with {identifier_key} = {id}")
