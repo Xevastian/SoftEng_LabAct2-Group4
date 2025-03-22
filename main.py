@@ -4,35 +4,50 @@ from patient import Patient
 from appointments import Appointment
 from vaccines import Vaccine
 from backend import DBModel
+import backend
 import hashlib
-import sys
-import msvcrt  # Windows-only
+from datetime import datetime, timedelta
+
 
 # Initialize databases
 users_db = DBModel("users.json")
 appointments_db = DBModel("appointments.json")
 vaccines_db = DBModel("vaccines.json")
+    
+def get_available_times():
+    appointments = Appointment.getAllAppointments()  # Fetch all appointments from the database
+    booked_times = [appointment['time'] for appointment in appointments]
 
-def input_password(prompt="Password: "):
-    print(prompt, end="", flush=True)
-    password = ""
-    
-    while True:
-        ch = msvcrt.getch()  # Read a single character
-        if ch in {b'\r', b'\n'}:  # Enter key is pressed
-            print()  # Move to the next line
-            break
-        elif ch == b'\x08':  # Backspace key is pressed
-            if len(password) > 0:
-                password = password[:-1]
-                sys.stdout.write('\b \b')  # Remove the last `*`
-                sys.stdout.flush()
-        else:
-            password += ch.decode('utf-8')
-            print("*", end="", flush=True)
-    
-    return password
-    
+    start_time = datetime.strptime('07:00', '%H:%M')
+    end_time = datetime.strptime('17:00', '%H:%M')
+
+    available_times = []
+    current_time = start_time
+
+    while current_time <= end_time:
+        time_str = current_time.strftime('%H:%M')
+        if time_str not in booked_times:
+            available_times.append(time_str)
+        current_time += timedelta(minutes=30)
+
+    return available_times
+
+def print_available_times(times):
+    morning_times = [time for time in times if time < '12:00']
+    afternoon_times = [time for time in times if time >= '12:30']
+
+    print("Available Hours:")
+    print("---------------------------------")
+    print("       Morning | Afternoon ")
+    print("---------------------------------")
+
+    max_length = max(len(morning_times), len(afternoon_times))
+    for i in range(max_length):
+        left = morning_times[i] if i < len(morning_times) else ""
+        right = afternoon_times[i] if i < len(afternoon_times) else ""
+        print(f"{left:<14} | {right}")
+    print("---------------------------------")
+
 def main():
     print("Welcome to the Vaccination Appointment System")
     
@@ -51,7 +66,7 @@ def main():
 def register():
     username = input("Username: ")
     email = input("Email: ")
-    password = input_password()
+    password = backend.input_password()
     fullname = input("Full name: ")
     birthDate = input("Birth date (yyyy-mm-dd): ")
     age = int(input("Age: "))
@@ -74,12 +89,11 @@ def register():
 
 def login():
     email = input("Email: ")
-    password = input_password()
+    password = backend.input_password()
     user = users_db.get(email,'email')
     if user == {} or user['password'] != hashlib.sha256(password.encode()).hexdigest():
         print('Wrong email or password')
         return   
-    print(user)
     if user['role'] == 'admin':
         adminTerminal(user)
     else:
@@ -92,6 +106,9 @@ def patientTerminal(patient):
         choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Cancel Appointment     [4]Log out\n\nInput: ").strip()
 
         if choice == "1":
+            available_times =  get_available_times()
+            print_available_times(available_times)
+
             time = input("Enter time(HH:MM): ")
             Vaccine.get_available_vaccines()
             vaccination = input("Enter Vaccine: ")

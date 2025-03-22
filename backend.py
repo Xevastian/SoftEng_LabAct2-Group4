@@ -1,6 +1,8 @@
 import json
 import os
 import hashlib
+import sys
+import msvcrt  # Windows-only
 
 # hashing
 def generate_id(username):
@@ -11,6 +13,26 @@ def hash_password(password):
 
 def verify_password(password, hashed_password):
     return hash_password(password) == hashed_password
+
+def input_password(prompt="Password: "):
+    print(prompt, end="", flush=True)
+    password = ""
+    
+    while True:
+        ch = msvcrt.getch()  # Read a single character
+        if ch in {b'\r', b'\n'}:  # Enter key is pressed
+            print()  # Move to the next line
+            break
+        elif ch == b'\x08':  # Backspace key is pressed
+            if len(password) > 0:
+                password = password[:-1]
+                sys.stdout.write('\b \b')  # Remove the last `*`
+                sys.stdout.flush()
+        else:
+            password += ch.decode('utf-8')
+            print("*", end="", flush=True)
+    
+    return password
 
 class DBModel:
     def __init__(self, file_path):
@@ -53,7 +75,6 @@ class DBModel:
     # Updating data
     def update(self, id, key, new_value, identifier_key="id"):
         data = self.load_data()
-        print(f"Loaded Data: {data}")
         found = False
         for item in data:
             if item.get(identifier_key) == (int(id) if identifier_key == "appointmentId" else id):  # Convert id to int if needed

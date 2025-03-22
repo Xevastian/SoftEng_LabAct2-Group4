@@ -2,6 +2,7 @@ from user import User
 from backend import DBModel
 from vaccines import Vaccine
 from appointments import Appointment
+import backend
 import hashlib
 import json
 
@@ -55,7 +56,7 @@ class Admin(User):
                 #Add users
                 username = input("Username: ")
                 email = input("Email: ")
-                password = input("Password: ")
+                password = backend.input_password()
                 fullname = input("Full name: ")
                 birthDate = input("Birth date (yyyy-mm-dd): ")
                 age = int(input("Age: "))
