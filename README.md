@@ -16,7 +16,7 @@
 	<b>CS-3202</b><br>
 	<a href="https://github.com/Exuille">Alexander Guille A. Penuliar</a><br>
 	<a href="https://github.com/chustinecantal">Chustine Mae B. Cantal</a><br>
-	<a href="https://github.com/Xevastian">Vex Ivan Sumang</a><br>
+	<a href="https://github.com/Xevastian">Vex Ivan Sumang C.</a><br>
 </p>
 
 <hr>
