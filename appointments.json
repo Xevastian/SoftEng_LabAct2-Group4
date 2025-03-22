@@ -47,5 +47,12 @@
         "time": "17",
         "vaccination": "COVID-19",
         "status": "Pending"
+    },
+    {
+        "appointmentId": 8,
+        "userId": "d77bbe31",
+        "time": "7:00",
+        "vaccination": "COVID-22",
+        "status": "Pending"
     }
 ]

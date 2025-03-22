@@ -37,5 +37,3 @@ class User:
 
         db.update(self.id, key, value)
         print(f"{key} updated successfully.")
-
-        

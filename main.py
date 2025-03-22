@@ -48,10 +48,11 @@ def print_available_times(times):
     print("---------------------------------")
 
 def main():
-    print("Welcome to the Vaccination Appointment System")
+    print("\n\nWelcome to the Vaccination Appointment System\n\n")
     
     while True:
-        choice = input("\n[1]Register     [2]Log in     [3]Exit\n\nInput: ").strip()
+        print('\n\n',"-"*25,"Vaccination Appointment System","-"*25)
+        choice = input("\n\n[1]Register     [2]Log in     [3]Exit\n\nInput: ").strip()
 
         if choice == "1":
             register()
@@ -63,6 +64,7 @@ def main():
             print("Invalid choice. Please try again.")
 
 def register():
+    print('\n\n'+"-"*25,"Register","-"*25,'\n\n')
     username = input("Username: ")
     email = input("Email: ")
     password = backend.input_password()
@@ -87,6 +89,7 @@ def register():
     return
 
 def login():
+    print('\n\n'+"-"*25,"Login","-"*25,'\n\n')
     email = input("Email: ")
     password = backend.input_password()
     user = users_db.get(email,'email')
@@ -103,6 +106,7 @@ def patientTerminal(patient):
     patient = Patient(patient)
     patient.login()
     while True:
+        print('\n\n'+"-"*25,"Patient Terminal","-"*25,'\n\n')
         choice = input("\n[1]Book Appointment     [2]View Appointment     [3]Cancel Appointment     [4]Change User Details     [5]Log out\n\nInput: ").strip()
 
         if choice == "1":
@@ -146,6 +150,7 @@ def adminTerminal(admin):
     admin = Admin(admin)
     admin.login()
     while True:
+        print('\n\n'+"-"*25,"Patient Terminal","-"*25,'\n\n')
         choice = input("\n[1]Manage Users     [2]Manage Appointment     [3]Manage Vaccinations     [4]Change User Details     [5]Log out\n\nInput: ").strip()
 
         if choice == "1":
