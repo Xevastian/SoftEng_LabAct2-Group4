@@ -1,4 +1,7 @@
-# EzVaxx: Vaccination Appointment System
+<p align="center">
+  <h1>EzVaxx: Vaccination Appointment System</h1>
+</p>
+
 
 <p align="center">
     <em><code>Efficient and Secure Vaccination Appointment Scheduling</code></em>
