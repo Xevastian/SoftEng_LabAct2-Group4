@@ -1,0 +1,38 @@
+[
+    {
+        "vaccineId": 1,
+        "name": "COVID-19",
+        "manufacturer": "Pfizer",
+        "stock": 0
+    },
+    {
+        "vaccineId": 2,
+        "name": "COVID-22",
+        "manufacturer": "Pfizer",
+        "stock": 12
+    },
+    {
+        "vaccineId": 3,
+        "name": "COVIDdas19",
+        "manufacturer": "Pfizer",
+        "stock": 80
+    },
+    {
+        "vaccineId": 4,
+        "name": "pfizer",
+        "manufacturer": "eq",
+        "stock": 23
+    },
+    {
+        "vaccineId": 5,
+        "name": "das",
+        "manufacturer": "rew",
+        "stock": 0
+    },
+    {
+        "vaccineId": 6,
+        "name": "dsa",
+        "manufacturer": "dsa",
+        "stock": 12
+    }
+]

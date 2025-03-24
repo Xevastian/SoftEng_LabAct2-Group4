@@ -1,0 +1,86 @@
+[
+    {
+        "username": "jodsa_doe23213",
+        "password": "0b60603bdc863c8b92dd32381391e65c53b364f8a8989fe1ceaad41803eb5fa3",
+        "email": "john@example.com21313",
+        "fullName": "John Doe",
+        "birthDate": "1990-05-15",
+        "age": 35,
+        "gender": "Male",
+        "address": "123 Street, NY",
+        "role": "patient",
+        "id": "002c3197"
+    },
+    {
+        "username": "Ibarra",
+        "password": "113459eb7bb31bddee85ade5230d6ad5d8b2fb52879e00a84ff6ae1067a210d3",
+        "email": "test@gmail.com",
+        "fullName": "Vex Ivan Sumang",
+        "birthDate": "2004-10-16",
+        "age": 20,
+        "gender": "Male",
+        "address": "BSU",
+        "role": "admin",
+        "id": "c7aadb9c"
+    },
+    {
+        "username": "jdjdjdjd",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "johnDoe@gmail.com",
+        "fullName": "John Doe",
+        "birthDate": "2001-12-12",
+        "age": 23,
+        "gender": "Male",
+        "address": "bats",
+        "role": "patient",
+        "id": "d77bbe31"
+    },
+    {
+        "username": "qwe",
+        "password": "15d0a08f5c3dc14213e26f61136c33a0e0d29c61e8e6e3c281b09a92837f3026",
+        "email": "qwe",
+        "fullName": "qwe",
+        "birthDate": "qwe",
+        "age": "12",
+        "gender": "qwe",
+        "address": "qwe",
+        "role": "patient",
+        "id": "489cd5db"
+    },
+    {
+        "username": "alexander",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "test@email.com",
+        "fullName": "Alex",
+        "birthDate": "2000-01-01",
+        "age": 25,
+        "gender": "Male",
+        "address": "Location ",
+        "role": "admin",
+        "id": "9f2a08fd"
+    },
+    {
+        "username": "asdname",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "asd",
+        "fullName": "Alex Password",
+        "birthDate": "2004-20-20",
+        "age": 20,
+        "gender": "Male",
+        "address": "Location ",
+        "role": "patient",
+        "id": "688787d8"
+    },
+    {
+        "username": "alex",
+        "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+        "email": "alex",
+        "fullName": "alex test",
+        "birthDate": "2000-02-01",
+        "age": 25,
+        "gender": "male",
+        "address": "location ",
+        "role": "patient",
+        "id": "4135aa9d"
+    }
+]

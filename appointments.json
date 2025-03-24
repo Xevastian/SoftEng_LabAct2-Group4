@@ -1,0 +1,58 @@
+[
+    {
+        "appointmentId": 1,
+        "userId": "9f2a08fd",
+        "time": "09:30",
+        "vaccination": "Pfizer",
+        "status": "Cancel"
+    },
+    {
+        "appointmentId": 2,
+        "userId": "9f2a08fd",
+        "time": "09:30",
+        "vaccination": "Pfizer",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 3,
+        "userId": "4135aa9d",
+        "time": "09:30",
+        "vaccination": "Pfizer",
+        "status": "Cancel"
+    },
+    {
+        "appointmentId": 4,
+        "userId": "4135aa9d",
+        "time": "09:30",
+        "vaccination": "COVID-19",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 5,
+        "userId": "4135aa9d",
+        "time": "11:30",
+        "vaccination": "COVID-22",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 6,
+        "userId": "4135aa9d",
+        "time": "15:30",
+        "vaccination": "das",
+        "status": "Cancel"
+    },
+    {
+        "appointmentId": 7,
+        "userId": "4135aa9d",
+        "time": "17",
+        "vaccination": "COVID-19",
+        "status": "Pending"
+    },
+    {
+        "appointmentId": 8,
+        "userId": "d77bbe31",
+        "time": "7:00",
+        "vaccination": "COVID-22",
+        "status": "Pending"
+    }
+]
