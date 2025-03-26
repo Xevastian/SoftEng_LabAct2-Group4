@@ -1,25 +1,25 @@
 [
     {
         "vaccineId": 1,
-        "name": "COVID-19",
+        "name": "Moderna",
         "manufacturer": "Pfizer",
         "stock": 0
     },
     {
         "vaccineId": 2,
-        "name": "COVID-22",
+        "name": "Anti COVID-22",
         "manufacturer": "Pfizer",
         "stock": 12
     },
     {
         "vaccineId": 3,
-        "name": "COVIDdas19",
+        "name": "Anti Rabies",
         "manufacturer": "Pfizer",
         "stock": 80
     },
     {
         "vaccineId": 4,
-        "name": "pfizer",
+        "name": "Anti Sakit",
         "manufacturer": "eq",
         "stock": 23
     },
